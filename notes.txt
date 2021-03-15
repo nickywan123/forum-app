@@ -1,0 +1,8 @@
+
+1. Threads
+2. Replies
+3. Users
+
+
+A. Tnread is created by a user.
+B. A reply belongs to a thread and each reply belongs to a user.

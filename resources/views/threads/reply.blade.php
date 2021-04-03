@@ -2,7 +2,7 @@
     <div class="card-header">
       <div class="level">
         <h5 class="flex">
-        <a href="{{route('profile',$reply->owner->name)}}">{{$reply->owner->name}}</a> 
+        <a href="{{route('profile.show',$reply->owner->name)}}">{{$reply->owner->name}}</a> 
             said {{$reply->created_at->diffForHumans()}}....
         </h5>
         @if(auth()->check())

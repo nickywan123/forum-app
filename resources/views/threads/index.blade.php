@@ -23,6 +23,7 @@
             @empty
                 <p>There are no threads at the moment.</p>
             @endforelse
+            {{ $threads->links() }}
         </div>
     </div>
 </div>

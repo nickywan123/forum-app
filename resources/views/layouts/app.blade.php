@@ -25,6 +25,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('favicon/favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('favicon/apple-touch-icon.png')}}">
+
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
    
@@ -55,6 +59,12 @@
         </div>
       </div>
       <script src="{{ asset('js/app.js') }}"></script>
+      {{-- <script>
+          Echo.channel('chat')
+              .listen('Message', (e) => {
+                console.log(e.message);
+    });
+      </script> --}}
 </body>
 
 <style>

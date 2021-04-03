@@ -20,12 +20,15 @@ class ProfilesTest extends TestCase
 
         $this->withoutExceptionHandling();
         // Create a user instance
+        
         $user = factory('App\User')->create();
 
-        //dd($user->toArray());
+        $this->actingAs($user);
+
+        //dd($user);
 
         // Get the profile request
-        $this->get("/profiles/{$user->name}")
+        $this->get("/profile/{$user->name}")
             ->assertSee($user->name);
     }
 
@@ -39,7 +42,7 @@ class ProfilesTest extends TestCase
         $thread = factory('App\Thread')->create(['user_id'=>auth()->id()]);
 
         // Get the profile request
-        $this->get("/profiles/" . auth()->user()->name)
+        $this->get("/activities/" . auth()->user()->name)
             ->assertSee($thread->title)
             ->assertSee($thread->body);
 

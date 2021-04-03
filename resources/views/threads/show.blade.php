@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="level">
-                        <span class="flex"><a href="{{route('profile',$thread->creator->name)}}">{{$thread->creator->name}}</a> posted:
+                        <span class="flex"><a href="{{route('profile.show',$thread->creator->name)}}">{{$thread->creator->name}}</a> posted:
                             {{$thread->title}}
                         </span>
                         @if(auth()->check())
@@ -30,7 +30,7 @@
             @foreach($replies as $reply)
              @include('threads.reply')
             @endforeach
-            <div class="mt-5">
+            <div class="mt-3">
                 {{$replies->links()}}
             </div>
             @if(auth()->check())

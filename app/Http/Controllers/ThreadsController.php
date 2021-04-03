@@ -18,7 +18,7 @@ class ThreadsController extends Controller
     //Add middleware for authenticated user only
     public function __construct()
     {
-        $this->middleware('auth')->except(['index','show']);
+        $this->middleware(['auth','verified'])->except(['index','show']);
     }
 
     /**
@@ -30,11 +30,12 @@ class ThreadsController extends Controller
     {
 
         $threads = Thread::latest()->filter($filters);
+
         if($channel->exists){
             $threads->where('channel_id',$channel->id);
         }
 
-        $threads = $threads->get();
+        $threads = $threads->paginate(10);
         
         return view('threads.index',compact('threads'));
     }
@@ -87,7 +88,7 @@ class ThreadsController extends Controller
         $user_subscription = $thread->getIsSubscribedToAttribute();
         return view('threads.show',[
             'thread' => $thread,
-            'replies' => $thread->replies()->paginate(25),
+            'replies' => $thread->replies()->paginate(10),
             'subscription' =>$user_subscription
         ]);
     }

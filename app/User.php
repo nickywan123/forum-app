@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -45,6 +45,11 @@ class User extends Authenticatable
 public function getRouteKeyName()
 {
     return 'name';
+}
+
+//Return user profile path
+public function path(){
+    return "/profile/{$this->name}";
 }
 
 // An user has many threads

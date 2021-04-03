@@ -66,16 +66,19 @@ Route::put('/replies/{reply}','RepliesController@update')->name('reply.update');
 //Delete a reply
 Route::delete('/replies/{reply}','RepliesController@destroy');
 
-//Get user's profile
-Route::get('/profiles/{user}','ProfilesController@show')->name('profile');
+//Get user's activity feed
+Route::get('/activities/{user}','ProfilesController@activity')->name('activity.user');
 
-//Get user's profile information
-Route::get('/profiles/{user}/information','ProfilesController@information')->name('profile.info');
+// Get user profile information
+Route::get('/profile/{user}','ProfilesController@show')->name('profile.show');
+
+//Update user profile information
+Route::patch('/profile/{user}','ProfilesController@update')->name('profile.update');
 
 //Route::resource('threads','ThreadsController');
 
 // Auth login and register
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 //Auth social for facebook
 
@@ -99,3 +102,12 @@ Route::get('/profiles/{user}/notifications','UserNotificationsController@index')
 Route::delete('/profiles/{user}/notifications/{notification}','UserNotificationsController@destroy')->name('notifcation.destroy');
 
 Route::post('/threads/search','SearchController@search')->name('thread.search');
+
+//Chat room
+Route::get('/chat','MessageController@index')->name('chat.room');
+
+//broadcast message
+Route::post('/message', 'MessageController@broadcast');
+
+//Change password
+Route::post('/changePassword','Auth\ChangePasswordController@changePassword')->name('changePassword');

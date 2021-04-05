@@ -87,44 +87,49 @@
      position:fixed;
      right:25px;
      bottom:25px;
- }
+    }
+    .navbar-bg-color{
+        background-color: #2d2d2d;
+    }
+    .navbar-custom .dropdown-item:hover{  
+         background-color: dimgray;
+    }
+    form.search-form input[type=text] {
+        padding: 10px;
+        font-size: 12px;
+        border: 1px solid grey;
+        border-radius: 25px 0 0 25px;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
 
- form.search-form input[type=text] {
-  padding: 10px;
-  font-size: 12px;
-  border: 1px solid grey;
-  border-radius: 25px 0 0 25px;
-  float: left;
-  width: 80%;
-  background: #f1f1f1;
-}
+    form.search-form input[type=text]:focus{
+        outline: none;
+    }
 
-form.search-form input[type=text]:focus{
-    outline: none;
-}
+    form.search-form button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: #2196F3;
+        color: white;
+        font-size: 12px;
+        border: 1px solid grey;
+        border-radius: 0 25px 25px 0;
+        border-left: none;
+        cursor: pointer;
+    }
 
-form.search-form button {
-  float: left;
-  width: 20%;
-  padding: 10px;
-  background: #2196F3;
-  color: white;
-  font-size: 12px;
-  border: 1px solid grey;
-  border-radius: 0 25px 25px 0;
-  border-left: none;
-  cursor: pointer;
-}
+    form.search-form button:hover {
+     background: #0b7dda;
+    }
 
-form.search-form button:hover {
-  background: #0b7dda;
-}
-
-form.search-form::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+    form.search-form::after {
+        content: "";
+        clear: both;
+    display: table;
+    }
 
 @media(max-width:760px){
     .search-form{

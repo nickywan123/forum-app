@@ -4,10 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Forum Station</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+         <!-- Favicon -->
+        <link rel="shortcut icon" href="{{ asset('favicon/favicon-32x32.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{asset('favicon/apple-touch-icon.png')}}">
 
         <!-- Styles -->
         <style>
@@ -45,7 +49,9 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 50px;
+                font-family: cursive;
+                color: darkorange;
             }
 
             .links > a {
@@ -61,40 +67,59 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+         
+            .background-img {
+                background-image: url('images/landing_page_img/space.jpeg');
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+
+            .button {
+                color: black;
+                border-radius: 50px;      
+                text-decoration: none;
+                margin-left: 40px;
+                margin-right: 40px;
+                font-size: 20px;
+                display:inline-block;
+                min-width: 100px;
+             }
+
+            .btn-gradient {
+                background: rgb(250, 172, 24);
+                background: linear-gradient(0deg,
+                        rgba(250, 172, 24, 1) 5%,
+                        rgba(255, 202, 5, 1) 56%,
+                        rgba(255, 231, 163, 1) 94%);
+            }
+
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
+        <div class="flex-center position-ref full-height background-img">
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Forum Station
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="container">                     
+                    <div class="row mt-4">
+                     <div class="col-12 col-md-6 offset-md-4 text-center">
+                        @if (Route::has('login'))         
+                        @auth
+                         <a href="{{ url('/threads') }}" class="button btn-gradient"><b>Home</b></a>
+                        @else
+                         <a href="{{ route('login') }}" class="button btn-gradient"><b>Login</b></a>
+                        @if (Route::has('register'))
+                         <a href="{{ route('register') }}" class="button btn-gradient"><b>Register</b></a>
+                        @endif
+                        @endauth     
+                        @endif
+                     </div>
+                    </div>
                 </div>
             </div>
         </div>
     </body>
 </html>
+
+
